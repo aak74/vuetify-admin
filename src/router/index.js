@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../components/Home'
-import Dashboard from '../components/Dashboard'
+import Home from '../pages/Home'
+import Dashboard from '../pages/Dashboard'
+import Database from '../pages/Database'
 
 Vue.use(Router)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard
+  },
+  {
+    path: '/database',
+    // name: 'Dashboard',
+    component: Database
   }
 ]
 

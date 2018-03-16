@@ -16,33 +16,37 @@
   </v-toolbar>
   <v-list subheader dense>
     <v-subheader>All notifications</v-subheader>
-    <v-list-tile @click="">
-      <v-list-tile-action>
-        <v-icon>person_add</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-title>
-        12 new users registered
-      </v-list-tile-title>
-    </v-list-tile>
-    <v-divider></v-divider>
-    <v-list-tile @click="">
-      <v-list-tile-action>
-        <v-icon>data_usage</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-title>
-        DB overloaded 80%
-      </v-list-tile-title>
-    </v-list-tile>
+    <notification 
+      v-for="(notification, index) in notifications" 
+      :title="notification.title" 
+      :icon="notification.icon" 
+      :key= "index"
+    />
   </v-list>
 </v-navigation-drawer>
 </template>
 
 <script>
+import Notification from './Notification'
+
 export default {
   name: 'Notifications',
+  components: {
+    Notification
+  },
+  props: ['right'],
   data () {
     return {
-      right: true,
+      notifications: [
+        {
+          title: '12 new users registered',
+          icon: 'person_add',
+        },
+        {
+          title: 'DB overloaded 80%',
+          icon: 'data_usage',
+        }
+      ]
     }
   },
   computed: {

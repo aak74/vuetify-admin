@@ -6,7 +6,7 @@
     <v-content>
         <router-view />
     </v-content>
-    <notifications />
+    <notifications :right="true"/>
   </v-app>
 </div>
 </template>

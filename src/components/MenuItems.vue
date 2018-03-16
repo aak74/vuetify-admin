@@ -3,7 +3,8 @@
     <v-list 
       subheader 
       :class="{'list-border-bottom' : mini}" 
-      v-for="menu in items"
+      v-for="(menu, index) in items"
+      :key="index"
     >
       <v-subheader>{{ menu.title }}</v-subheader>
       <template v-for="item in menu.items">

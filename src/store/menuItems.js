@@ -30,7 +30,7 @@ export default [
       {
         icon: 'storage',
         title: 'Database',
-        link: ''
+        link: '/database'
       },
       {
         icon: 'perm_media',

@@ -42,7 +42,7 @@
   </div>
 
   <v-tooltip bottom>
-    <v-btn icon @click.stop="rightDrawer = !rightDrawer" slot="activator">
+    <v-btn icon @click.stop="togglePanel" slot="activator">
       <v-badge color="red" overlap>
         <span slot="badge">2</span>
         <v-icon>notifications</v-icon>
@@ -122,6 +122,9 @@ export default {
       this.searching = false
       this.search = ''
       document.querySelector('#search').blur()
+    },
+    togglePanel () {
+      this.$store.commit('SHOW_PANEL_NOTIFICATIONS', true)
     }
   }
 }

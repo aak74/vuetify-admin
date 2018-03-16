@@ -13,10 +13,10 @@
     <v-list class="pa-0" :class="{'list-border-bottom' : miniMenu}">
         <v-list-tile>
           <v-list-tile-action v-if="!miniMenu">
-            <v-icon large color="orange">invert_colors</v-icon>
+            <v-icon large color="green">settings_applications</v-icon>
           </v-list-tile-action>
           <v-list-tile-content v-if="!miniMenu">
-            <v-list-tile-title><h2>Projects</h2></v-list-tile-title>
+            <v-list-tile-title><h2>Admin</h2></v-list-tile-title>
           </v-list-tile-content>
           <v-list-tile-action>
             <v-btn icon @click.stop="toggleMini">
@@ -76,7 +76,6 @@ export default {
       drawer: true,
       fixed: false,
       right: true,
-      rightDrawer: false,
       tabs: null,
       tabsItems: [
         {id: 1, title: 'Indicators', link: 'indicators'},

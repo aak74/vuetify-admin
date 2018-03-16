@@ -2,14 +2,15 @@
 <v-navigation-drawer
   temporary
   :right="right"
-  v-model="rightDrawer"
+  :value="panelNotificationsVisible"
+  @input="inputPanelVisibility"
   fixed
   app
 >
   <v-toolbar flat prominent dark class="primary">
     <v-toolbar-title>Notifications</v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-btn icon @click.stop="rightDrawer = false">
+    <v-btn icon @click.stop="closePanel">
       <v-icon>close</v-icon>
     </v-btn>
   </v-toolbar>
@@ -42,7 +43,19 @@ export default {
   data () {
     return {
       right: true,
-      rightDrawer: false,
+    }
+  },
+  computed: {
+    panelNotificationsVisible () {
+      return this.$store.state.panelNotificationsVisible
+    }
+  },
+  methods: {
+    inputPanelVisibility (visible) {
+      this.$store.commit('SHOW_PANEL_NOTIFICATIONS', visible)
+    },
+    closePanel () {
+      this.$store.commit('SHOW_PANEL_NOTIFICATIONS', false)
     }
   }
 }

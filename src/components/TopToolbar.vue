@@ -24,22 +24,7 @@
   </v-menu>
   <v-spacer></v-spacer>
 
-  <v-btn icon @click.native.stop="searchBegin">
-    <v-icon>search</v-icon>
-  </v-btn>
-  <div :class="{'searching--closed': !searching}" class="searching">
-    <v-text-field
-      id="search"
-      v-model="search"
-      append-icon="close"
-      :append-icon-cb="searchEnd"
-      label="Search"
-      hide-details
-      single-line
-      color="white"
-      @blur="onBlur"
-    />
-  </div>
+  <search-bar />
 
   <v-tooltip bottom>
     <v-btn icon @click.stop="togglePanel" slot="activator">
@@ -98,31 +83,26 @@
 </template>
 
 <script>
+import SearchBar from './SearchBar'
+
 export default {
   name: 'TopToolbar',
+  components: {
+    SearchBar
+  },
+  computed: {
+    searching () {
+      return this.$store.state.searching
+    },
+  },
   data () {
     return {
       menuItems: [
         'Vue', 'NodeJS', 'Laravel'
       ],
-      searching: false,
-      search: ''
     }
   },
   methods: {
-    onBlur () {
-      this.searching = false
-      this.search = ''
-    },
-    searchBegin () {
-      this.searching = true
-      setTimeout(() => document.querySelector('#search').focus(), 50)
-    },
-    searchEnd () {
-      this.searching = false
-      this.search = ''
-      document.querySelector('#search').blur()
-    },
     togglePanel () {
       this.$store.commit('SHOW_PANEL_NOTIFICATIONS', true)
     }

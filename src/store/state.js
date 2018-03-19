@@ -4,7 +4,7 @@ export default {
   menuItems,
   miniMenu: false,
   panelNotificationsVisible: false,
-  searching: true,
-  // searching: false,
-  search: '456456'
+  // searching: true,
+  searching: false,
+  search: ''
 }

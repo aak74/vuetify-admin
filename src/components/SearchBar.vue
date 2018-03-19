@@ -1,6 +1,6 @@
 <template>
-  <span>
-    <v-btn icon @click.native.stop="searchBegin">
+  <div class="search-bar">
+    <v-btn class="icon-search" icon @click.native.stop="searchBegin">
       <v-icon>search</v-icon>
     </v-btn>
     <div :class="{'searching--closed': !searching}" class="searching">
@@ -17,7 +17,7 @@
         @blur="onBlur"
       />
     </div>
-  </span>
+  </div>
 </template>
 
 <script>
@@ -50,3 +50,14 @@ export default {
   }
 }
 </script>
+
+<style>
+.search-bar {
+  position: relative;
+}
+
+.search-bar > button,
+.search-bar > div {
+  float: left;
+}
+</style>

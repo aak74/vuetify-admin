@@ -5,7 +5,7 @@
       <v-icon>arrow_drop_down</v-icon>
     </v-toolbar-title>
     <v-list>
-      <v-list-tile v-for="item in menuItems" :key="item.id" @click="click">
+      <v-list-tile v-for="item in menuItems" :key="item.id" @click="click" :data-id="item.id">
         <v-list-tile-title v-text="item.title" :data-id="item.id"></v-list-tile-title>
       </v-list-tile>
     </v-list>

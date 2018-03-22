@@ -18,5 +18,14 @@ export default {
     state.topMenu.forEach((item) => {
       item.active = (parseInt(item.id) === parseInt(id))
     })
-  }
+  },
+
+  SHOW_PROFILE(state) {
+    console.log('SHOW_PROFILE');
+  },
+
+  LOGOUT(state) {
+    console.log('LOGOUT');
+  },
+
 }

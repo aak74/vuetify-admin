@@ -35,21 +35,10 @@ export default {
     Notification
   },
   props: ['right'],
-  data () {
-    return {
-      notifications: [
-        {
-          title: '12 new users registered',
-          icon: 'person_add',
-        },
-        {
-          title: 'DB overloaded 80%',
-          icon: 'data_usage',
-        }
-      ]
-    }
-  },
   computed: {
+    notifications () {
+      return this.$store.state.notifications.items
+    },
     panelNotificationsVisible () {
       return this.$store.state.status.panelNotificationsVisible
     }

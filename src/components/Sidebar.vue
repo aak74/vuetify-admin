@@ -9,23 +9,7 @@
   fixed
   app
 >
-  <v-toolbar flat class="transparent" dense>
-    <v-list class="pa-0" :class="{'list-border-bottom' : miniMenu}">
-        <v-list-tile>
-          <v-list-tile-action v-if="!miniMenu">
-            <v-icon large color="green">settings_applications</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content v-if="!miniMenu">
-            <v-list-tile-title><h2>Admin</h2></v-list-tile-title>
-          </v-list-tile-content>
-          <v-list-tile-action>
-            <v-btn icon @click.stop="toggleMini">
-              <v-icon v-html="miniMenu ? 'chevron_right' : 'chevron_left'"></v-icon>
-            </v-btn>
-          </v-list-tile-action>
-        </v-list-tile>
-    </v-list>
-  </v-toolbar>
+  <sidebar-toggler :mini="miniMenu" />
   <v-divider></v-divider>
 
   <v-tooltip right :disabled="!miniMenu">
@@ -57,14 +41,16 @@
 
 <script>
 import MenuItems from './MenuItems'
+import SidebarToggler from './SidebarToggler'
 import status from '../mixins/status'
 
 export default {
   name: 'Sidebar',
   components: {
-    MenuItems
+    MenuItems,
+    SidebarToggler
   },
-  mixins: [ status ]  ,
+  mixins: [ status ],
   computed: {
     menuItems () {
       return this.$store.state.leftMenu
@@ -77,20 +63,9 @@ export default {
     return {
       drawer: true,
       fixed: false,
-      right: true,
       tabs: null,
-      tabsItems: [
-        {id: 1, title: 'Indicators', link: 'indicators'},
-        {id: 2, title: 'Backup', link: 'backup'},
-        {id: 3, title: 'Logs', link: 'logs'}
-      ],
     }
   },
-  methods: {
-    toggleMini () {
-      this.$store.commit('TOGGLE_MENU_MINI')
-    }
-  }
 }
 </script>
 

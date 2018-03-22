@@ -57,18 +57,20 @@
 
 <script>
 import MenuItems from './MenuItems'
+import status from '../mixins/status'
 
 export default {
   name: 'Sidebar',
   components: {
     MenuItems
   },
+  mixins: [ status ]  ,
   computed: {
     menuItems () {
-      return this.$store.state.menuItems
+      return this.$store.state.leftMenu
     },
     miniMenu () {
-      return this.$store.state.miniMenu
+      return this.status.miniMenu
     },
   },
   data () {

@@ -11,17 +11,7 @@
     class="hidden-lg-and-up"
     :class="searching ? 'hidden-xs-only' : ''"
   />
-  <v-menu :nudge-width="100" :class="searching ? 'hidden-xs-only' : ''">
-    <v-toolbar-title slot="activator" class="pl-2">
-      <span>{{ menuItems[0] }}</span>
-      <v-icon>arrow_drop_down</v-icon>
-    </v-toolbar-title>
-    <v-list>
-      <v-list-tile v-for="item in menuItems" :key="item" @click="">
-        <v-list-tile-title v-text="item"></v-list-tile-title>
-      </v-list-tile>
-    </v-list>
-  </v-menu>
+  <top-menu />
   <v-spacer></v-spacer>
 
   <search-bar />
@@ -84,23 +74,18 @@
 
 <script>
 import SearchBar from './SearchBar'
+import TopMenu from './TopMenu'
 
 export default {
   name: 'TopToolbar',
   components: {
-    SearchBar
+    SearchBar,
+    TopMenu
   },
   computed: {
     searching () {
       return this.$store.state.searching
     },
-  },
-  data () {
-    return {
-      menuItems: [
-        'Vue', 'NodeJS', 'Laravel'
-      ],
-    }
   },
   methods: {
     togglePanel () {

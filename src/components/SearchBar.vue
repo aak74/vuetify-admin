@@ -3,10 +3,10 @@
     <v-btn class="icon-search" icon @click.native.stop="searchBegin">
       <v-icon>search</v-icon>
     </v-btn>
-    <div :class="{'searching--closed': !searching}" class="searching">
+    <div :class="{'searching--closed': !status.searching}" class="searching">
       <v-text-field
         id="search"
-        :value="search"
+        :value="status.search"
         @update="update"
         append-icon="close"
         :append-icon-cb="searchEnd"
@@ -21,16 +21,11 @@
 </template>
 
 <script>
+import status from '../mixins/status';
+
 export default {
   name: 'SearchBar',
-  computed: {
-    search () {
-      return this.$store.state.search
-    },
-    searching () {
-      return this.$store.state.searching
-    },
-  },
+  mixins: [ status ],
   methods: {
     onBlur () {
       this.$store.commit('STOP_SEARCHING')

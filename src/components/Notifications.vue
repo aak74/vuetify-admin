@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     panelNotificationsVisible () {
-      return this.$store.state.panelNotificationsVisible
+      return this.$store.state.status.panelNotificationsVisible
     }
   },
   methods: {

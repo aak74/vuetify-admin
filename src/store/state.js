@@ -1,10 +1,14 @@
-import menuItems from './menuItems'
+import leftMenu from '../config/leftMenu'
+import topMenu from '../config/topMenu'
 
 export default {
-  menuItems,
-  miniMenu: false,
-  panelNotificationsVisible: false,
+  leftMenu,
+  topMenu,
+  status: {
+    panelNotificationsVisible: false,
+    miniMenu: false,
+    searching: false,
+    search: ''
+  }
   // searching: true,
-  searching: false,
-  search: ''
 }

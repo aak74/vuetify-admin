@@ -1,16 +1,22 @@
 export default {
   TOGGLE_MENU_MINI (state) {
-    state.miniMenu = !state.miniMenu
+    state.status.miniMenu = !state.status.miniMenu
   },
   SHOW_PANEL_NOTIFICATIONS (state, payload) {
-    state.panelNotificationsVisible = payload
-    // state.panelNotificationsVisible = !state.panelNotificationsVisible
+    state.status.panelNotificationsVisible = payload
   },
   STOP_SEARCHING (state) {
-    state.searching = false
-    state.search = ''
+    state.status.searching = false
+    state.status.search = ''
   },
   START_SEARCHING (state) {
-    state.searching = true
+    state.status.searching = true
+  },
+
+  TOP_MENU_CHANGED (state, id) {
+    console.log('TOP_MENU_CHANGED', id);
+    state.topMenu.forEach((item) => {
+      item.active = (parseInt(item.id) === parseInt(id))
+    })
   }
 }

@@ -4,7 +4,9 @@
     <sidebar />
     <top-toolbar />
     <v-content>
+      <transition name="fade" mode="out-in">
         <router-view />
+      </transition>
     </v-content>
     <notifications :right="true"/>
   </v-app>

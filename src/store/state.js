@@ -10,7 +10,8 @@ export default {
     panelNotificationsVisible: false,
     miniMenu: false,
     searching: false,
-    search: ''
+    search: '',
+    loading: false
   },
   notifications: {
     title: '2 unread notifications',
@@ -29,5 +30,5 @@ export default {
     fullname: 'John Doe',
     role: 'Administrator'
   },
-  autoLoad: false
+  // autoLoad: false
 }

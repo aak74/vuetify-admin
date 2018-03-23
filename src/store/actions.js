@@ -1,9 +1,11 @@
 import api from '../api'
 
-const loadAll = (store, cb) => {
-  if (!store.state.autoLoad) {
-    return;
-  }
+const loadUsers = (store, cb) => {
+  // if (!store.state.autoLoad) {
+  //   return;
+  // }
+  store.commit('LOADING');
+  
   api.request('get', 'jira/users/')
     .then((response) => {
       console.log('loadAll', response);
@@ -12,7 +14,8 @@ const loadAll = (store, cb) => {
         return
       }
 
-      store.commit('LOADED_ALL', response.data.data)
+      store.commit('LOADED')
+      store.commit('LOADED_USERS', response.data.data)
       if (!!cb) {
         cb()
       }
@@ -23,5 +26,6 @@ const loadAll = (store, cb) => {
 }
 
 export default {
-  loadAll
+  // loadAll,
+  loadUsers
 }

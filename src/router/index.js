@@ -4,6 +4,7 @@ import Home from '../pages/Home'
 import Dashboard from '../pages/Dashboard'
 import Database from '../pages/Database'
 import Users from '../pages/Users'
+import User from '../pages/User'
 
 Vue.use(Router)
 
@@ -27,7 +28,12 @@ const routes = [
     path: '/users',
     name: 'Users',
     component: Users
-  }
+  },
+  {
+    path: '/users/:id',
+    name: 'User',
+    component: User
+  },
 ]
 
 export default new Router({

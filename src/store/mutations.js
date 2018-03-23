@@ -30,10 +30,22 @@ export default {
 
   LOADING_ERROR (state, error) {
     console.log('LOADING_ERROR', error);
+    state.status.loading = false;
   },
 
-  LOADED_ALL (state, data) {
-    console.log('LOADED_ALL', data);
+  LOADING (state, data) {
+    state.status.loading = true;
+  },
+
+  LOADED (state) {
+    console.log('LOADED');
+    state.status.loading = false;
+  },
+
+  LOADED_USERS (state, data) {
+    console.log('LOADED_USERS', data, window);
+    
+    // state
   },
 
 }

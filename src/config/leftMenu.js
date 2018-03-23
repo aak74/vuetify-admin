@@ -32,6 +32,18 @@ export default [
         description: null
       },
       {
+        icon: 'person',
+        title: 'User123',
+        link: '/users/123',
+        description: null
+      },
+      {
+        icon: 'person',
+        title: 'User456',
+        link: '/users/456',
+        description: null
+      },
+      {
         icon: 'storage',
         title: 'Database',
         link: '/database',

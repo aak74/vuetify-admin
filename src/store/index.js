@@ -15,5 +15,5 @@ const store = new Vuex.Store({
     mutations,
 })
 
-actions.loadAll(store)
+// actions.loadAll(store)
 export default store

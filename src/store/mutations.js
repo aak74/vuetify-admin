@@ -20,12 +20,20 @@ export default {
     })
   },
 
-  SHOW_PROFILE(state) {
+  SHOW_PROFILE (state) {
     console.log('SHOW_PROFILE');
   },
 
-  LOGOUT(state) {
+  LOGOUT (state) {
     console.log('LOGOUT');
+  },
+
+  LOADING_ERROR (state, error) {
+    console.log('LOADING_ERROR', error);
+  },
+
+  LOADED_ALL (state, data) {
+    console.log('LOADED_ALL', data);
   },
 
 }

@@ -28,5 +28,6 @@ export default {
   user: {
     fullname: 'John Doe',
     role: 'Administrator'
-  }
+  },
+  autoLoad: false
 }

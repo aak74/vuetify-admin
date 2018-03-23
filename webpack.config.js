@@ -77,6 +77,7 @@ module.exports = {
     extensions: ['*', '.js', '.vue', '.json']
   },
   devServer: {
+    proxy: require('./config/proxytable'),
     historyApiFallback: true,
     noInfo: true,
     overlay: true

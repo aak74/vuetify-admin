@@ -26,9 +26,9 @@ export default [
     title: 'Develop',
     items: [
       {
-        icon: 'supervisor_account',
-        title: 'Authentification',
-        link: '',
+        icon: 'people',
+        title: 'Users',
+        link: '/users',
         description: null
       },
       {

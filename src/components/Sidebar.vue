@@ -11,7 +11,7 @@
 >
   <sidebar-toggler :mini="miniMenu" />
   <v-divider></v-divider>
-  <extra-menu-item :mini="mini" :item="extraMenuItem" />
+  <extra-menu-item :mini="miniMenu" :item="extraMenuItem" />
   <v-divider></v-divider>
   <menu-items 
     :items="menuItems"

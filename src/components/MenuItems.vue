@@ -7,8 +7,8 @@
       :key="index"
     >
       <v-subheader>{{ menu.title }}</v-subheader>
-      <template v-for="item in menu.items">
-        <menu-item :mini="mini" :item="item" />
+      <template v-for="(item, index) in menu.items">
+        <menu-item :mini="mini" :item="item" :key="index"/>
       </template>
     </v-list>
     <v-divider></v-divider>

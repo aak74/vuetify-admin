@@ -1,7 +1,9 @@
 import leftMenu from '../config/leftMenu'
 import topMenu from '../config/topMenu'
+import extraMenuItem from '../config/extraMenuItem'
 
 export default {
+  extraMenuItem,
   leftMenu,
   topMenu,
   status: {

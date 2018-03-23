@@ -5,17 +5,20 @@ export default [
       {
         icon: 'dashboard',
         title: 'Dashboard',
-        link: '/dashboard'
+        link: '/dashboard',
+        description: 'Some useful description about Dashboard'
       },
       {
         icon: 'event',
         title: 'Events',
-        link: ''
+        link: '',
+        description: null
       },
       {
         icon: 'comment',
         title: 'Notifications',
-        link: ''
+        link: '',
+        description: null
       } 
     ]
   },
@@ -25,27 +28,32 @@ export default [
       {
         icon: 'supervisor_account',
         title: 'Authentification',
-        link: ''
+        link: '',
+        description: null
       },
       {
         icon: 'storage',
         title: 'Database',
-        link: '/database'
+        link: '/database',
+        description: null
       },
       {
         icon: 'perm_media',
         title: 'Storage',
-        link: ''
+        link: '',
+        description: null
       },
       {
         icon: 'public',
         title: 'Hosting',
-        link: ''
+        link: '',
+        description: null
       },
       {
         icon: 'functions',
         title: 'Functions',
-        link: ''
+        link: '',
+        description: null
       }
     ],
   }

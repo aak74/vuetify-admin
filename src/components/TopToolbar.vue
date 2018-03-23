@@ -33,9 +33,6 @@ export default {
     UserMenu
   },
   computed: {
-    searching () {
-      return this.$store.state.searching
-    },
     notifications () {
       return this.$store.state.notifications
     },

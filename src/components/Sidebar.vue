@@ -11,27 +11,8 @@
 >
   <sidebar-toggler :mini="miniMenu" />
   <v-divider></v-divider>
-
-  <v-tooltip right :disabled="!miniMenu">
-    <v-toolbar flat class="transparent" dense slot="activator">
-      <v-list class="pa-0" :class="{'list-border-bottom' : miniMenu}">
-        <v-list-tile
-          to="/"
-          exact
-        >
-          <v-list-tile-action>
-            <v-icon>home</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Overview</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-toolbar>
-    <span>Project Overview</span>
-  </v-tooltip>
+  <extra-menu-item :mini="mini" :item="extraMenuItem" />
   <v-divider></v-divider>
-
   <menu-items 
     :items="menuItems"
     :mini="miniMenu"
@@ -41,6 +22,8 @@
 
 <script>
 import MenuItems from './MenuItems'
+import MenuItem from './MenuItem';
+import ExtraMenuItem from './ExtraMenuItem';
 import SidebarToggler from './SidebarToggler'
 import status from '../mixins/status'
 
@@ -48,12 +31,17 @@ export default {
   name: 'Sidebar',
   components: {
     MenuItems,
+    MenuItem,
+    ExtraMenuItem,
     SidebarToggler
   },
   mixins: [ status ],
   computed: {
+    extraMenuItem () {
+      return this.$store.state.extraMenuItem
+    },
     menuItems () {
-      return this.$store.state.leftMenu
+      return this.$store.getters.leftMenu
     },
     miniMenu () {
       return this.status.miniMenu

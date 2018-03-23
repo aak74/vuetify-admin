@@ -40,7 +40,6 @@ export default {
     },
     update (e) {
       console.log('update', e);
-      
     }
   }
 }

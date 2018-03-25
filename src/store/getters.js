@@ -9,5 +9,12 @@ export default {
       })
       return group
     })
-  }
+  },
+
+  users (state) {
+    if (!state.data.users) {
+      return []
+    }
+    return state.data.users
+  },
 }

@@ -6,6 +6,9 @@ export default {
   extraMenuItem,
   leftMenu,
   topMenu,
+  data: {
+    users: []
+  },
   status: {
     panelNotificationsVisible: false,
     miniMenu: false,

@@ -1,38 +1,66 @@
 <template>
 <div>
   Users
+  <data-table
+    :headers="headers"
+    :items="items"
+    :loading="status.loading"
+    :controls="controls"
+    @editItem="editItem"
+    @deleteItem="deleteItem"
+  />
 </div>
 </template>
 
 <script>
+import DataTable from '../components/DataTable'
+import status from '../mixins/status'
+
 export default {
   name: 'Users',
+  components: {
+    DataTable
+  },
+  mixins: [status],
   watch: {
     '$route': {
       handler: 'fetchData',
-      // handler: this.fetchData,
       immediate: true
     }
   },
   methods: {
     fetchData () {
       this.$store.dispatch('loadUsers');
-      // this.error = this.post = null
-      // this.loading = true
-      // // замените здесь `getPost` используемым методом получения данных / доступа к API
-      // getPost(this.$route.params.id, (err, post) => {
-      //   this.loading = false
-      //   if (err) {
-      //     this.error = err.toString()
-      //   } else {
-      //     this.post = post
-      //   }
-      // })
+    },
+    editItem (item) {
+      console.log('Users editItem', item);
+    },
+    deleteItem (item) {
+      console.log('Users deleteItem', item);
+    },
+  },
+  computed: {
+    headers () {
+      let headers = [
+        { text: 'ID', value: 'id'},
+        { text: 'Login', value: 'username'},
+        { text: 'Fullname', value: 'fullname'},
+      ];
+      if (this.controls && this.controls.length) {
+        headers.push({ text: 'Actions', value: 'actions', sortable: false, invisible: true });
+      }
+      return headers;
+    },
+    items () {
+      return this.$store.getters.users;
+    },
+    controls () {
+      // return [];
+      return [
+        {name: 'Edit', icon: 'edit', color: 'teal', emit: 'editItem'},
+        {name: 'Delete', icon: 'delete', color: 'pink', emit: 'deleteItem'},
+      ]
     }
   }
-  // beforeRouteEnter (to, from, next) {
-  //   console.log('beforeRouteEnter', to, from);
-  //   next()
-  // },  
 }
 </script>

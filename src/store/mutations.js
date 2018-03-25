@@ -44,7 +44,7 @@ export default {
 
   LOADED_USERS (state, data) {
     console.log('LOADED_USERS', data, window);
-    
+    state.data.users = data
     // state
   },
 

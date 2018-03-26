@@ -21,7 +21,11 @@ export default {
     loading: false
   },
   ui: {
-    defaultPagination: [10, 25, { 'text': 'All', 'value': -1 }]
+    defaultPagination: [10, 25, { 'text': 'All', 'value': -1 }],
+    defaultControls: [
+      { name: 'Edit', icon: 'edit', color: 'teal', emit: 'editItem' },
+      { name: 'Delete', icon: 'delete', color: 'pink', emit: 'deleteItem' },
+    ]
   },
   notifications: {
     title: '2 unread notifications',

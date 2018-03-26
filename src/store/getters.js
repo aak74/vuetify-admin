@@ -26,10 +26,15 @@ export default {
   },
 
   headers (state) {
-    if (!state.data.headers) {
+    if (!state.data.headers[state.currentEntity]) {
       return []
     }
-    return state.data.headers
+
+    let headers = state.data.headers[state.currentEntity].slice();
+    if (state.ui.defaultControls && state.ui.defaultControls.length) {
+      headers.push({ text: 'Actions', value: 'actions', sortable: false, invisible: true });
+    }
+    return headers;
   },
 
   currentEntityList (state) {

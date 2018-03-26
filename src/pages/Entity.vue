@@ -8,6 +8,7 @@
     :controls="controls"
     @editItem="editItem"
     @deleteItem="deleteItem"
+    v-if="isShow"
   />
 </div>
 </template>
@@ -17,11 +18,10 @@ import DataTable from '../components/DataTable'
 import status from '../mixins/status'
 
 export default {
-  name: 'Users',
+  name: 'Entity',
   components: {
     DataTable
   },
-  props: ['currentEntity'],
   mixins: [status],
   watch: {
     '$route': {
@@ -41,21 +41,30 @@ export default {
     },
   },
   computed: {
-    headers () {
-      let headers = this.$store.state.data.currentHeaders.slice();
-      if (this.controls && this.controls.length) {
-        headers.push({ text: 'Actions', value: 'actions', sortable: false, invisible: true });
-      }
-      return headers;
+    // currentHeaders () {
+    //   return this.$store.state.data.currentHeaders;
+    // },
+    controls () {
+      return this.$store.state.ui.defaultControls;
     },
+
+    isShow () {
+      // return true;
+      return this.headers && this.headers.length;
+    },
+
+    // headers () {
+    //   let headers = this.currentHeaders.slice();
+    //   if (this.controls && this.controls.length) {
+    //     headers.push({ text: 'Actions', value: 'actions', sortable: false, invisible: true });
+    //   }
+    //   return headers;
+    // },
     items () {
       return this.$store.getters.items;
     },
-    controls () {
-      return [
-        {name: 'Edit', icon: 'edit', color: 'teal', emit: 'editItem'},
-        {name: 'Delete', icon: 'delete', color: 'pink', emit: 'deleteItem'},
-      ]
+    headers () {
+      return this.$store.getters.headers;
     },
     routeName () {
       return this.$route.name;

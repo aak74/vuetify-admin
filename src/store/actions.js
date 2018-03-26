@@ -1,5 +1,5 @@
 import api from '../api'
-import entities from '../config/entities'
+import mockEntities from '../config/entities'
 
 /**
  * Load menus, entities
@@ -8,22 +8,12 @@ import entities from '../config/entities'
 const loadAll = (store) => {
   // console.log('loadAll');
   setTimeout(() => {
-    store.state.data.headers = {};
-    console.log('loadAll 2', entities);
-    entities.forEach(entity => {
-      store.state.data.headers[entity.name] = [];
-      entity.fields.forEach(field => {
-        store.state.data.headers[entity.name].push({
-          text: field.title,
-          value: field.name
-        });
-      });
-    });
+    store.commit('LOADED_ENTITIES', mockEntities);
   }, 200);
 }
 
 /**
- * 
+ * Loaded Entity from backend
  * @param {Object} store 
  * @param {Object} payload
  */

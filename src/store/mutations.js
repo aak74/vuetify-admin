@@ -49,11 +49,24 @@ export default {
   },
 
   LOADED_ENTITY (state, payload) {
-    console.log('LOADED_USERS', payload, window);
-    // state.data[payload.entity] = payload.data;
+    console.log('LOADED_USERS', payload);
     state.data.items = payload.data;
-    // state
     SET_CURRENT_ENTITY(state, payload.entity);
+  },
+  
+  LOADED_ENTITIES (state, entities) {
+    console.log('LOADED_ENTITES', entities);
+    state.data.headers = {};
+    // console.log('loadAll 2', entities);
+    entities.forEach(entity => {
+      state.data.headers[entity.name] = [];
+      entity.fields.forEach(field => {
+        state.data.headers[entity.name].push({
+          text: field.title,
+          value: field.name
+        });
+      });
+    });
   },
   
   SET_CURRENT_ENTITY

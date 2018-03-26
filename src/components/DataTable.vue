@@ -3,6 +3,7 @@
     :headers="headers"
     :items="items"
     :loading="true"
+    :rows-per-page-items="defaultPagination"
     class="elevation-1"
   >
     <v-progress-linear 
@@ -42,6 +43,9 @@ export default {
   computed: {
     showControls () {
       return this.$props.controls && this.$props.controls.length
+    },
+    defaultPagination () {
+      return this.$store.state.ui.defaultPagination;
     },
   },
   methods: {

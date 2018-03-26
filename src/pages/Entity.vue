@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     fetchData () {
-      this.$store.dispatch('loadEntity', this.$route);
+      this.$store.dispatch('loadEntity', this.$route.meta);
     },
     editItem (item) {
       console.log('Data editItem', item);

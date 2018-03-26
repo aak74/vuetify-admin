@@ -30,7 +30,7 @@ entities.forEach((entity) => {
   routes.push({
     path: '/' + entity.link,
     name: entity.routename,
-    meta: { path: entity.apiPath, entity: entity.name, fields: entity.fields },
+    meta: { apiPath: entity.apiPath, entity: entity.name, fields: entity.fields },
     component: Entity
   })
 }) 

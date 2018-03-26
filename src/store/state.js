@@ -20,6 +20,9 @@ export default {
     search: '',
     loading: false
   },
+  ui: {
+    defaultPagination: [10, 25, { 'text': 'All', 'value': -1 }]
+  },
   notifications: {
     title: '2 unread notifications',
     items: [

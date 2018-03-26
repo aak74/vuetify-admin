@@ -1,6 +1,6 @@
 import entities from './entities'
 
-export default [
+let menu = [
   {    
     title: 'Analytics',
     items: [
@@ -24,8 +24,13 @@ export default [
       } 
     ]
   },
-  {
-    title: 'Entities',
-    items: entities,
-  }
 ]
+
+let items = entities.reduce((carry, entity) => {
+  carry.push(entity.menuItem);
+  return carry;
+}, [])
+
+menu.push({ title: 'Entities', items})
+
+export default menu;

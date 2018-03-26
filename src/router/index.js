@@ -28,8 +28,8 @@ const routes = [
 
 entities.forEach((entity) => {
   routes.push({
-    path: '/' + entity.link,
-    name: entity.routename,
+    path: '/' + entity.menuItem.link,
+    name: entity.routeName,
     meta: { apiPath: entity.apiPath, entity: entity.name, fields: entity.fields },
     component: Entity
   })

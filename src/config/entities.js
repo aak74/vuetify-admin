@@ -1,13 +1,14 @@
 export default [
   {
     name: 'user',
-    display: 'User',
-    title: 'Users',
-    routename: 'Users',
-    link: 'users',
+    menuItem: {
+      title: 'Users',
+      description: null,
+      icon: 'people',
+      link: 'users',
+    },
+    routeName: 'Users',
     apiPath: 'jira/users/',
-    icon: 'people',
-    description: null,
     fields: [
       {name: 'id', title: 'ID'},
       {name: 'username', title: 'Login'},
@@ -16,13 +17,14 @@ export default [
     editable: false
   }, {
     name: 'project',
-    display: 'Project',
-    title: 'Projects',
-    routename: 'Projects',
-    link: 'projects',
+    menuItem: {
+      title: 'Projects',
+      description: null,
+      icon: 'apps',
+      link: 'projects',
+    },
+    routeName: 'Projects',
     apiPath: 'jira/projects/',
-    icon: 'apps',
-    description: null,
     fields: [
       {name: 'id', title: 'ID'},
       {name: 'lead', title: 'Lead'},

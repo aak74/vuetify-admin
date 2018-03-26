@@ -1,20 +1,42 @@
 import axios from 'axios'
+import store from '../store'
 import server from '../config/server'
 
-export default {
-  request(method, uri, data = null) {
-    if (!method) {
-      console.error('API function call requires method argument')
-      return
-    }
-
-    if (!uri) {
-      console.error('API function call requires uri argument')
-      return
-    }
-
-    var url = server.serverURI + uri
-    // console.log('api', url);
-    return axios({ method, url, data })
+const request = (method, uri, data = null) => {
+  if (!method) {
+    console.error('API function call requires method argument')
+    return
   }
+  
+  if (!uri) {
+    console.error('API function call requires uri argument')
+    return
+  }
+  
+  var url = server.serverURI + uri
+  // console.log('api', url);
+  return axios({ method, url, data })
+}
+
+const getData = (method, uri, data = null, successMutation = null) => {
+  store.commit('LOADING');
+  return request('get', uri)
+    .then((response) => {
+      // console.log('getData response', response);
+      if (response.data.status !== 'ok') {
+        store.commit('LOADING_ERROR', { message: 'Response status is not ok', code: 406 })
+        return
+      }
+
+      store.commit('LOADED')
+      return response.data.data;
+    })
+    .catch((error) => {
+      store.commit('LOADING_ERROR', error)
+    })
+}
+
+export default {
+  request,
+  getData
 }

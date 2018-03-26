@@ -1,6 +1,6 @@
 <template>
 <div>
-  Users
+  <h2>{{ routeName }}</h2>
   <data-table
     :headers="headers"
     :items="items"
@@ -21,6 +21,7 @@ export default {
   components: {
     DataTable
   },
+  props: ['currentEntity'],
   mixins: [status],
   watch: {
     '$route': {
@@ -30,36 +31,34 @@ export default {
   },
   methods: {
     fetchData () {
-      this.$store.dispatch('loadUsers');
+      this.$store.dispatch('loadEntity', this.$route);
     },
     editItem (item) {
-      console.log('Users editItem', item);
+      console.log('Data editItem', item);
     },
     deleteItem (item) {
-      console.log('Users deleteItem', item);
+      console.log('Data deleteItem', item);
     },
   },
   computed: {
     headers () {
-      let headers = [
-        { text: 'ID', value: 'id'},
-        { text: 'Login', value: 'username'},
-        { text: 'Fullname', value: 'fullname'},
-      ];
+      let headers = this.$store.state.data.currentHeaders.slice();
       if (this.controls && this.controls.length) {
         headers.push({ text: 'Actions', value: 'actions', sortable: false, invisible: true });
       }
       return headers;
     },
     items () {
-      return this.$store.getters.users;
+      return this.$store.getters.items;
     },
     controls () {
-      // return [];
       return [
         {name: 'Edit', icon: 'edit', color: 'teal', emit: 'editItem'},
         {name: 'Delete', icon: 'delete', color: 'pink', emit: 'deleteItem'},
       ]
+    },
+    routeName () {
+      return this.$route.name;
     }
   }
 }

@@ -7,8 +7,12 @@ export default {
   leftMenu,
   topMenu,
   data: {
-    users: []
+    items: [],
+    headers: [],
+    currentHeaders: []
   },
+  currentEntity: null,
+  entities: null,
   status: {
     panelNotificationsVisible: false,
     miniMenu: false,

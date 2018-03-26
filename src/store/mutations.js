@@ -1,3 +1,9 @@
+const SET_CURRENT_ENTITY = (state, entity) => {
+  console.log('SET_CURRENT_ENTITY', entity);
+  state.currentEntity = entity;
+  state.data.currentHeaders = state.data.headers[state.currentEntity];
+}
+
 export default {
   TOGGLE_MENU_MINI (state) {
     state.status.miniMenu = !state.status.miniMenu
@@ -42,10 +48,13 @@ export default {
     state.status.loading = false;
   },
 
-  LOADED_USERS (state, data) {
-    console.log('LOADED_USERS', data, window);
-    state.data.users = data
+  LOADED_ENTITY (state, payload) {
+    console.log('LOADED_USERS', payload, window);
+    // state.data[payload.entity] = payload.data;
+    state.data.items = payload.data;
     // state
+    SET_CURRENT_ENTITY(state, payload.entity);
   },
-
+  
+  SET_CURRENT_ENTITY
 }

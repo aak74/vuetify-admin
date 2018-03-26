@@ -17,4 +17,27 @@ export default {
     }
     return state.data.users
   },
+
+  items (state) {
+    if (!state.data.items) {
+      return []
+    }
+    return state.data.items
+  },
+
+  headers (state) {
+    if (!state.data.headers) {
+      return []
+    }
+    return state.data.headers
+  },
+
+  currentEntityList (state) {
+    console.log('currentEntityList', state.currentEntity, state.data[state.currentEntity]);
+    if (!state.currentEntity) {
+      return [];
+    }
+    
+    return state.data[state.currentEntity];
+  }
 }

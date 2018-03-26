@@ -1,31 +1,35 @@
 import api from '../api'
+import entities from '../config/entities'
 
-const loadUsers = (store, cb) => {
-  // if (!store.state.autoLoad) {
-  //   return;
-  // }
-  store.commit('LOADING');
-  
-  api.request('get', 'jira/users/')
-    .then((response) => {
-      console.log('loadAll', response);
-      if (response.data.status !== 'ok') {
-        store.commit('LOADING_ERROR', { message: 'Response status is not ok', code: 406 })
-        return
-      }
+const loadAll = (store) => {
+  console.log('loadAll');
+  setTimeout(() => {
+    store.state.data.headers = {};
+    console.log('loadAll 2', entities);
+    entities.forEach(entity => {
+      store.state.data.headers[entity.name] = [];
+      entity.fields.forEach(field => {
+        store.state.data.headers[entity.name].push({
+          text: field.title,
+          value: field.name
+        });
+      });
+    });
+  }, 200);
+}
 
-      store.commit('LOADED')
-      store.commit('LOADED_USERS', response.data.data)
-      if (!!cb) {
-        cb()
-      }
-    })
-    .catch((error) => {
-      store.commit('LOADING_ERROR', error)
+const loadEntity = (store, route) => {
+  console.log('loadEntity', route);
+  // api.getData('get', route.meta.path, {}, 'LOADED_ENTITY')
+  let entity = route.meta.entity;
+  api.getData('get', route.meta.path, {}, 'LOADED_ENTITY')
+    .then(data => {
+      console.log('resolve', data);
+      store.commit('LOADED_ENTITY', {data, entity})
     })
 }
 
 export default {
-  // loadAll,
-  loadUsers
+  loadAll,
+  loadEntity,
 }

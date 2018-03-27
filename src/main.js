@@ -11,9 +11,12 @@ Vue.config.devtools = true
 Vue.config.productionTip = false
 
 new Vue({
+  debug: true,
   el: '#app',
   router,
   store,
   components: { App },
   template: '<App/>'
 })
+
+store.dispatch('loadAll')

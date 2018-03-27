@@ -1,10 +1,9 @@
 import leftMenu from '../config/leftMenu'
 import topMenu from '../config/topMenu'
-import extraMenuItem from '../config/extraMenuItem'
 
 export default {
-  extraMenuItem,
-  leftMenu,
+  extraMenuItem: null,
+  leftMenu: [],
   topMenu,
   data: {
     items: [],
@@ -44,5 +43,5 @@ export default {
     fullname: 'John Doe',
     role: 'Administrator'
   },
-  // autoLoad: false
+  loadFromBackend: true
 }

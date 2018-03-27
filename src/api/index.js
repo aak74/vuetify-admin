@@ -1,6 +1,6 @@
-import axios from 'axios'
-import store from '../store'
-import server from '../config/server'
+import axios from 'axios';
+import store from '../store';
+import server from '../config/server';
 
 const request = (method, uri, data = null) => {
   if (!method) {
@@ -19,6 +19,7 @@ const request = (method, uri, data = null) => {
 }
 
 const getData = (method, uri, data = null, successMutation = null) => {
+  // console.log('getData', store);
   store.commit('LOADING');
   return request('get', uri)
     .then((response) => {

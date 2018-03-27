@@ -1,7 +1,54 @@
+import Entity from '../pages/Entity'
+import router from '../router'
+
 const SET_CURRENT_ENTITY = (state, entity) => {
   console.log('SET_CURRENT_ENTITY', entity);
   state.currentEntity = entity;
   state.data.currentHeaders = state.data.headers[state.currentEntity];
+}
+
+const LOADING_SUCCESS = (state) => {
+  state.status.loading = false;
+}
+
+const LOADED_ENTITIES = (state, entities) => {
+  console.log('LOADED_ENTITIES', entities);
+  state.data.headers = {};
+  // console.log('loadAll 2', entities);
+  entities.forEach(entity => {
+    state.data.headers[entity.name] = [];
+    entity.fields.forEach(field => {
+      state.data.headers[entity.name].push({
+        text: field.title,
+        value: field.name
+      });
+    });
+  });
+}
+
+const LOADED_LEFT_MENU = (state, menuItems) => {
+  console.log('LOADED_LEFT_MENU', menuItems, router, window.Vue);
+  state.leftMenu = menuItems;
+  const routes = menuItems.reduce((carry, groupMenu) => {
+    console.log('reduce', carry, groupMenu);
+    
+    if (!groupMenu.items || !groupMenu.items.reduce) {
+      return carry;
+    }
+    return groupMenu.items.reduce((carry, menuItem) => {
+      carry.push({
+        path: '/' + menuItem.link,
+        name: menuItem.name,
+        meta: { apiPath: menuItem.apiPath, entity: menuItem.name },
+        component: Entity
+      });
+      return carry;
+    }, carry) 
+    // return carry;
+  }, []) 
+  // debugger;
+  // router.addRoutes(routes);
+  console.log('LOADED_LEFT_MENU 2', routes, router.options.routes);
 }
 
 export default {
@@ -38,36 +85,31 @@ export default {
     console.log('LOADING_ERROR', error);
     state.status.loading = false;
   },
-
+  
   LOADING (state, data) {
     state.status.loading = true;
   },
-
+  
   LOADED (state) {
     console.log('LOADED');
-    state.status.loading = false;
+    LOADING_SUCCESS(state);
   },
-
+  
+  LOADED_ALL (state, data) {
+    console.log('LOADED_ALL', data);
+    LOADED_ENTITIES(state, data.entities)
+    LOADED_LEFT_MENU(state, data.leftMenu)
+    LOADING_SUCCESS(state);
+  },
+  
   LOADED_ENTITY (state, payload) {
     console.log('LOADED_USERS', payload);
     state.data.items = payload.data;
     SET_CURRENT_ENTITY(state, payload.entity);
+    LOADING_SUCCESS(state);
   },
   
-  LOADED_ENTITIES (state, entities) {
-    console.log('LOADED_ENTITES', entities);
-    state.data.headers = {};
-    // console.log('loadAll 2', entities);
-    entities.forEach(entity => {
-      state.data.headers[entity.name] = [];
-      entity.fields.forEach(field => {
-        state.data.headers[entity.name].push({
-          text: field.title,
-          value: field.name
-        });
-      });
-    });
-  },
-  
+  LOADED_ENTITIES,
+  LOADING_SUCCESS,
   SET_CURRENT_ENTITY
 }

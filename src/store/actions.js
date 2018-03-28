@@ -1,10 +1,10 @@
 import api from '../api'
 import entity from './entity'
 
-import mockEntities from '../config/entities'
-import mockExtraMenuItem from '../config/extraMenuItem'
-import mockLeftMenu from '../config/leftMenu'
-import mockTopMenu from '../config/topMenu'
+import mockEntities from '../mock/entities'
+import mockExtraMenuItem from '../mock/extraMenuItem'
+import mockLeftMenu from '../mock/leftMenu'
+import mockTopMenu from '../mock/topMenu'
 
 
 /**

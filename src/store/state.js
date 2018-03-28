@@ -1,5 +1,4 @@
-import leftMenu from '../config/leftMenu'
-import topMenu from '../config/topMenu'
+import topMenu from '../mock/topMenu'
 
 export default {
   extraMenuItem: null,
@@ -43,5 +42,5 @@ export default {
     fullname: 'John Doe',
     role: 'Administrator'
   },
-  loadFromBackend: true
+  loadFromBackend: false
 }

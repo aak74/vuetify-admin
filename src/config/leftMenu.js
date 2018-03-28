@@ -1,13 +1,11 @@
-import entities from './entities'
-
-let menu = [
+export default [
   {    
     title: 'Analytics',
     items: [
       {
         icon: 'dashboard',
         title: 'Dashboard',
-        link: '/dashboard',
+        link: 'dashboard',
         description: 'Some useful description about Dashboard'
       },
       {
@@ -24,13 +22,23 @@ let menu = [
       } 
     ]
   },
+  {    
+    title: 'Entities',
+    items: [
+      {
+        icon: 'people',
+        title: 'Team',
+        link: 'team',
+        description: null,
+        entityName: 'user'
+      },
+      {
+        icon: 'apps',
+        title: 'Projects',
+        link: 'projects',
+        description: null,
+        entityName: 'project'
+      } 
+    ]
+  },
 ]
-
-let items = entities.reduce((carry, entity) => {
-  carry.push(entity.menuItem);
-  return carry;
-}, [])
-
-menu.push({ title: 'Entities', items})
-
-export default menu;

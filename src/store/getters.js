@@ -13,13 +13,6 @@ export default {
     })
   },
 
-  users (state) {
-    if (!state.data.users) {
-      return []
-    }
-    return state.data.users
-  },
-
   items (state) {
     if (!state.data.items) {
       return []
@@ -46,5 +39,26 @@ export default {
     }
     
     return state.data[state.currentEntity];
-  }
+  },
+
+  /**
+   * get title for entity
+   */
+  entityTitle (state) {
+    if (state.currentEntity && state.data.entities && state.data.entities[state.currentEntity]) {
+      return state.data.entities[state.currentEntity].title;
+    }
+    return '';
+  },
+
+  /**
+   * get Plural title for entity
+   */
+  entitiesTitle (state) {
+    if (state.currentEntity && state.data.entities && state.data.entities[state.currentEntity]) {
+      return state.data.entities[state.currentEntity].titlePlural;
+    }
+    return '';
+  },
+
 }

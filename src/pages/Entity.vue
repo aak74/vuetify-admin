@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h2>{{ routeName }}</h2>
+  <h2>{{ entitiesTitle }}</h2>
   <data-table
     :headers="headers"
     :items="items"
@@ -22,7 +22,7 @@ export default {
   components: {
     DataTable
   },
-  mixins: [status],
+  // mixins: [status],
   watch: {
     '$route': {
       handler: 'fetchData',
@@ -44,6 +44,10 @@ export default {
     // currentHeaders () {
     //   return this.$store.state.data.currentHeaders;
     // },
+    status () {
+      return this.$store.state.status;
+    },
+
     controls () {
       return this.$store.state.ui.defaultControls;
     },
@@ -66,8 +70,9 @@ export default {
     headers () {
       return this.$store.getters.headers;
     },
-    routeName () {
-      return this.$route.name;
+    entitiesTitle () {
+      // return 'ewq'
+      return this.$store.getters.entitiesTitle;
     }
   }
 }

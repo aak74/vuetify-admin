@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '../pages/Home'
 import Dashboard from '../pages/Dashboard'
 import Database from '../pages/Database'
+// import Entity from '../pages/Entity'
 // import entities from '../config/entities'
 
 Vue.use(Router)
@@ -23,6 +24,10 @@ const routes = [
     // name: 'Dashboard',
     component: Database
   },
+  // {
+  //   path: '/entity',
+  //   component: Entity
+  // },
 ]
 
 export default new Router({

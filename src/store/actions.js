@@ -1,4 +1,6 @@
 import api from '../api'
+import entity from './entity'
+
 import mockEntities from '../config/entities'
 import mockExtraMenuItem from '../config/extraMenuItem'
 import mockLeftMenu from '../config/leftMenu'
@@ -43,13 +45,14 @@ const loadEntitiesFromBackend = (store) => {
  * @param {Object} payload
  */
 const loadEntity = (store, payload) => {
-  console.log('loadEntity', route);
+  console.log('loadEntity', store.state, payload);
+  // return;
   // api.getData('get', route.meta.path, {}, 'LOADED_ENTITY')
-  let entity = payload.entity;
-  api.getData('get', payload.apiPath, {}, 'LOADED_ENTITY')
+  let entityName = payload.entityName;
+  api.getData('get', entity.getApiPathByEntityName(store.state, entityName))
     .then(data => {
       console.log('resolve', data);
-      store.commit('LOADED_ENTITY', {data, entity})
+      store.commit('LOADED_ENTITY', { data, entityName})
     })
 }
 

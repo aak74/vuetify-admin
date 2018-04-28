@@ -14,13 +14,11 @@ export default [
     name: 'project',
     title: 'Project',
     titlePlural: 'Projects',
-    apiPath: 'jira/projects/',
+    apiPath: 'projects/',
     fields: [
-      {name: 'id', title: 'ID'},
-      {name: 'lead', title: 'Lead'},
-      {name: 'pkey', title: 'Code'},
-      {name: 'pname', title: 'Name'},
-      {name: 'url', title: 'URL'},
+      {name: '_id', title: 'ID'},
+      {name: 'name', title: 'Name'},
+      {name: 'path', title: 'Path'},
     ]
   }
 ];

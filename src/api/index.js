@@ -24,13 +24,8 @@ const getData = (method, uri, data = null, successMutation = null) => {
   return request('get', uri)
     .then((response) => {
       // console.log('getData response', response);
-      if (response.data.status !== 'ok') {
-        store.commit('LOADING_ERROR', { message: 'Response status is not ok', code: 406 })
-        return
-      }
-
       store.commit('LOADED')
-      return response.data.data;
+      return response.data;
     })
     .catch((error) => {
       store.commit('LOADING_ERROR', error)
